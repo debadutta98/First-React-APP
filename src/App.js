@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
+import FormCard from "./Components/FormCard";
+import Card from "./Components/UI/Cards/Card";
+import ListCard from "./Components/UI/Cards/ListCard";
 function App() {
+  let [listView, setListView] = useState([]);
+  console.log("listView",listView);
+  const formOnsumitHandler = ({ name, age }) => {
+    setListView((prev) => {return [{name,age},...prev]});
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Card>
+        <FormCard onSubmitHandler={formOnsumitHandler} />
+      </Card>
+      {listView.length !== 0 ? (
+        <Card className="smallpad">
+          <ul>
+            {listView.map((value) => {
+              return (
+                <ListCard>
+                  <p>{`${value.name}(${value.age} years old)`}</p>
+                </ListCard>
+              );
+            })}
+          </ul>
+        </Card>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

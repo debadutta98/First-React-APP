@@ -1,0 +1,14 @@
+.small_list_card {
+  position: relative;
+  margin-top: 10px;
+  width: 400px;
+  padding: 3px;
+  margin-left: -15px;
+  border-radius: 3px;
+  border: 1px solid rgb(146, 146, 146);
+  }
+ p
+ {
+   display: flex;
+   justify-content: center;
+ }
